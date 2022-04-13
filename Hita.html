@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <style>
+        .circles {
+            display: flex;
+            margin: 10% auto 5% auto;
+            width: 17%;
+            position: relative;
+            height: 220px;
+        }
+        
+        .circleCommon {
+            position: absolute;
+            height: 60px;
+            width: 60px;
+            border-radius: 50px;
+            margin: 10px 0px;
+        }
+        
+        .circle1 {
+            left: 0;
+            bottom: 0;
+            background-color: #2a712c;
+        }
+        
+        .circle2 {
+            left: 0;
+            top: 0;
+            background-color: #ff4c20;
+            z-index: 3;
+        }
+        
+        .circle3 {
+            right: 0;
+            bottom: 0;
+            background-color: #24a8eb;
+        }
+        
+        .circle4 {
+            right: 0;
+            top: 0;
+            background-color: yellow;
+            z-index: 2;
+        }
+        
+        .buttons {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .button1 {
+            background-color: #007376;
+            color: #fff;
+            width: 100px;
+            height: 30px;
+            margin-right: 10px;
+        }
+        
+        .button2 {
+            background-color: #007376;
+            color: #fff;
+            width: 100px;
+            height: 30px;
+            margin-left: 10px;
+        }
+        
+        div {
+            text-align: center;
+        }
+        
+        .move-top {
+            animation: 2s ease-in-out top infinite, 8s ease-in-out color_1 infinite;
+        }
+        
+        .move-right {
+            animation: 2s ease-in-out right infinite, 8s ease-in-out color_2 infinite;
+        }
+        
+        .move-bottom {
+            animation: 2s ease-in-out top infinite, 8s ease-in-out color_3 infinite;
+        }
+        
+        .move-left {
+            animation: 2s ease-in-out left infinite, 8s ease-in-out color_4 infinite;
+        }
+        /*Movement animations*/
+        
+        @keyframes top {
+            0% {
+                height: 60px;
+            }
+            50% {
+                height: 200px;
+            }
+            100% {
+                height: 60px;
+            }
+        }
+        
+        @keyframes left {
+            0% {
+                width: 60px;
+            }
+            50% {
+                width: 215px;
+            }
+            100% {
+                width: 60px;
+            }
+        }
+        
+        @keyframes right {
+            0% {
+                width: 60px;
+            }
+            50% {
+                width: 215px;
+            }
+            100% {
+                width: 60px;
+            }
+        }
+        /* color animations*/
+        
+        @keyframes color_1 {
+            0% {
+                background-color: #2a712c;
+            }
+            25% {
+                background-color: #ff4c20;
+            }
+            50% {
+                background-color: yellow;
+            }
+            75% {
+                background-color: #24a8eb;
+            }
+            100% {
+                background-color: #2a712c;
+            }
+        }
+        
+        @keyframes color_2 {
+            0% {
+                background-color: #ff4c20;
+            }
+            25% {
+                background-color: yellow;
+            }
+            50% {
+                background-color: #24a8eb;
+            }
+            75% {
+                background-color: #2a712c;
+            }
+            100% {
+                background-color: #ff4c20;
+            }
+        }
+        
+        @keyframes color_3 {
+            0% {
+                background-color: yellow;
+            }
+            25% {
+                background-color: #24a8eb;
+            }
+            50% {
+                background-color: #2a712c;
+            }
+            75% {
+                background-color: #ff4c20;
+            }
+            100% {
+                background-color: yellow;
+            }
+        }
+        
+        @keyframes color_4 {
+            0% {
+                background-color: #24a8eb;
+            }
+            25% {
+                background-color: #2a712c;
+            }
+            50% {
+                background-color: #ff4c20;
+            }
+            75% {
+                background-color: yellow;
+            }
+            100% {
+                background-color: #24a8eb;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="circles">
+        <div class="circleCommon circle1" data-move="top"></div>
+        <div class="circleCommon circle2" data-move="right"></div>
+        <div class="circleCommon circle3" data-move="left"></div>
+        <div class="circleCommon circle4" data-move="bottom"></div>
+    </div>
+    <div class="buttons">
+        <button id="start" class="button1" type="button" onclick="start()">Start</button>
+        <button id="stop" class="button2" type="button" onclick="stop()">Stop</button>
+    </div>
+
+
+    <script type="text/javascript">
+        function start() {
+            var circles = document.querySelectorAll(".circleCommon")
+            circles.forEach((circle) => {
+                var movement = circle.getAttribute("data-move")
+                circle.classList.add("move-" + movement)
+            })
+        }
+
+        function stop() {
+            var circles = document.querySelectorAll(".circleCommon")
+            circles.forEach((circle) => {
+                var movement = circle.getAttribute("data-move")
+                circle.classList.remove("move-" + movement)
+            })
+        }
+    </script>
+</body>
+
+</html>
